@@ -7,6 +7,11 @@ class EventsController < ApplicationController
    
   end
 
+  def show
+    @event = Event.last
+    @user = User.select('user_name').where("id=#{@event.creator_id}").take
+  end
+
   def create
     user_id = session[:current_user_id]
     
@@ -16,7 +21,7 @@ class EventsController < ApplicationController
     
     if @event.save
       
-      redirect_to events_index_path
+      redirect_to events_show_path
     else
       
       render :new

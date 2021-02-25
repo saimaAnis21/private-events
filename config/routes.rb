@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'events/index', to: 'events#index'
   get 'events/new', to: 'events#new'
   post 'events/new', to: 'events#create'
-  # post 'events/create', to: 'events#show'
+  get 'events/show', to: 'events#show'
   # post 'events/show', to: 'events#show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "users#sign_in"
