@@ -8,8 +8,15 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.last
+    @user_attendees = []
+    @event = Event.where('id=9').take
     @user = User.select('user_name').where("id=#{@event.creator_id}").take
+    attendees = EventAttendee.select('attendee_id').where("attended_event_id=#{@event.id}").take
+    
+    attendees.each do |x|
+      @user_attendees.push(User.select('user_name').where("id=#{x.attendee_id}").take)
+    end 
+    
   end
 
   def create
@@ -21,7 +28,7 @@ class EventsController < ApplicationController
     
     if @event.save
       
-      redirect_to events_show_path
+      redirect_to events_index_path
     else
       
       render :new
