@@ -12,7 +12,6 @@ class UsersController < ApplicationController
   end
 
   def show
-     #@user = User.all
      @event = Event.where("creator_id = #{session[:current_user_id]}")
   end
 end
