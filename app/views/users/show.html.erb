@@ -3,13 +3,17 @@
 <h3><%= session[:current_user_name] %></h3>
 <table>
     <tr>
-        <th>Username:</th>
-        <th>Email:</th>
+        <th>Event Title:</th>
+        <th>Event Description:</th>
+        <th>Event Date</th>
+        <th>Event Location</th> 
     </tr>
-    <% @user.each do |user|%>
+    <% @event.each do |event|%>
     <tr>
-        <td><%= user.user_name %></td>
-        <td><%= user.email %></td>
+        <td><%= event.title %></td>
+        <td><%= event.description %></td>
+        <td><%= event.date %></td>
+        <td><%= event.location %></td>
     </tr>
     <% end %>
 </table>
