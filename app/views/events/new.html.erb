@@ -1,0 +1,16 @@
+<h3><%= session[:current_user_name] %> is logged in</h3>
+
+<h3>Create a new event</h3>
+<div>
+<%= form_tag(events_new_path, method: 'post')  do %>
+
+    <%= label_tag(:title, "Title:") %>
+    <%= text_field_tag(:title) %><br/><br/>
+
+    <%= label_tag(:description, "Description:") %>
+    <%= text_field_tag(:description) %><br/><br/>
+
+   
+    <%= submit_tag("Submit") %>
+<% end %>
+</div>
