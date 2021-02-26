@@ -1,5 +1,6 @@
-<h2>Events of the User <%= session[:current_user_name] %> </h2>
+<h2>Events attended by the User <%= session[:current_user_name] %> </h2>
 
+<h2>Previous Events</h2>
 
 <table>
     <tr>
@@ -8,13 +9,39 @@
         <th>Event Date</th>
         <th>Event Location</th> 
     </tr>
-    <% @event.each do |event|%>
-    <tr>
+    
+     <% @event.each do |event|%>
+      <% if event.date < Date.today %>
+      <tr>       
         <td><%= event.title %></td>
         <td><%= event.description %></td>
         <td><%= event.date %></td>
         <td><%= event.location %></td>
-    </tr>
+      </tr>
+      
+       <% end %>
     <% end %>
 </table>
 
+<h2>Upcoming Events</h2>
+
+<table>
+    <tr>
+        <th>Event Title:</th>
+        <th>Event Description:</th>
+        <th>Event Date</th>
+        <th>Event Location</th> 
+    </tr>
+    
+     <% @event.each do |event|%>
+      <% if event.date > Date.today %>
+      <tr>       
+        <td><%= event.title %></td>
+        <td><%= event.description %></td>
+        <td><%= event.date %></td>
+        <td><%= event.location %></td>
+      </tr>
+      
+       <% end %>
+    <% end %>
+</table>
