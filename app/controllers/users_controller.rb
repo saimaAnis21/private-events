@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   end
 
   def show
-     @event = Event.where("creator_id = #{session[:current_user_id]}")
+    # @event = Event.where("creator_id = #{session[:current_user_id]}")
+    @event = Event.joins(:attendees).where("attendee_id=#{session[:current_user_id]}")
   end
 end
