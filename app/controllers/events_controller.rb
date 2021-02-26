@@ -8,14 +8,9 @@ class EventsController < ApplicationController
   end
 
   def show
-    @user_attendees = []
-    @event = Event.where('id=9').take
-    @user = User.select('user_name').where("id=#{@event.creator_id}").take
-    attendees = EventAttendee.select('attendee_id').where("attended_event_id=#{@event.id}").take
+    # @event=EventAttendee.joins(:attendee).select("attendee_id").where("attended_event_id=7")
+    @event = User.joins(:attended_events).where("attended_event_id=9")
     
-    attendees.each do |x|
-      @user_attendees.push(User.select('user_name').where("id=#{x.attendee_id}").take)
-    end 
     
   end
 
