@@ -1,6 +1,6 @@
 <h3><%= session[:current_user_name] %> is logged in</h3>
 
-<h2>All Events </h2>
+<h2>Previous Events </h2>
 <table>
     <tr>
         <th>Event Title:</th>
@@ -9,7 +9,27 @@
         <th>Event Location</th> 
         <th>Creator id</th> 
     </tr>
-    <% @event.each do |event|%>
+    <% @event_past.each do |event|%>
+    <tr>
+        <td><%= event.title %></td>
+        <td><%= event.description %></td>
+        <td><%= event.date %></td>
+        <td><%= event.location %></td>
+        <td><%= event.creator_id %></td>
+    </tr>
+    <% end %>
+</table>
+
+<h2>Upcoming Events</h2>
+<table>
+    <tr>
+        <th>Event Title:</th>
+        <th>Event Description:</th>
+        <th>Event Date</th>
+        <th>Event Location</th> 
+        <th>Creator id</th> 
+    </tr>
+    <% @event_upcoming.each do |event|%>
     <tr>
         <td><%= event.title %></td>
         <td><%= event.description %></td>
