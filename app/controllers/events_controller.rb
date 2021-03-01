@@ -8,7 +8,6 @@ class EventsController < ApplicationController
   def new; end
 
   def show
-    # @event=EventAttendee.joins(:attendee).select("attendee_id").where("attended_event_id=7")
     event_id = params[:id]
     @event = User.joins(:attended_events).where("attended_event_id='#{event_id}'")
   end
