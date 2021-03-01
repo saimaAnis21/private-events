@@ -2,7 +2,7 @@
 A private events website where members create events. The events are visible to everyone. Members can also go to their personal pages to view the events they have attended and are going to attend.
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-![](../images/pic1.png)
+![](app/assets/images/pic1.png)
 ![](../images/pic2.png)
 ![](../images/pic3.png)
 ![](../images/pic4.png)
