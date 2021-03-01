@@ -5,7 +5,9 @@ class EventsController < ApplicationController
     @event_upcoming = @event.upcoming
   end
 
-  def new; end
+  def new
+    @user = User.all
+  end
 
   def show
     event_id = params[:id]
@@ -16,7 +18,8 @@ class EventsController < ApplicationController
     user_id = session[:current_user_id]
 
     @user = User.where("id='#{user_id}'").take
-    @event = @user.created_events.build(title: params[:title].to_s, description: params[:description].to_s)
+    @event = @user.created_events.build(title: params[:title].to_s, description: params[:description].to_s,
+                                        date: params[:date], location: params[:location])
 
     if @event.save
 

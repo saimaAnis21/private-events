@@ -1,7 +1,21 @@
 class UsersController < ApplicationController
-  def sign_in
+  def sign_up
     @user = User.new
   end
+
+  def create
+    @user = User.new(email: params[:email], user_name: params[:user_name])
+
+    if @user.save
+
+      redirect_to users_sign_in_path
+    else
+
+      render :new
+    end
+  end
+
+  def sign_in; end
 
   def logged_in
     @user = User.where("user_name='#{params[:username]}'").take
@@ -17,6 +31,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @event = Event.joins(:attendees).where("attendee_id=#{session[:current_user_id]}")
+    # @event = Event.joins(:attendees).where("attendee_id=#{session[:current_user_id]}")
+    @usr = User.find(session[:current_user_id])
+    @event = @usr.attended_events
   end
 end

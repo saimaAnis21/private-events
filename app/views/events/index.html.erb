@@ -1,6 +1,6 @@
 <% if logged_in? %>
 <h3><%= session[:current_user_name] %> is logged in</h3>
-<% end %>
+
 <h2>Previous Events </h2>
 
 <table>
@@ -57,4 +57,7 @@
     </tr>
     <% end %>
 </table>
-
+<% else %>
+    <p> Please sign in! </p>
+    
+<% end %>
