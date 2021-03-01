@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def logged_in
     @user = User.where("user_name='#{params[:username]}'").take
     session[:current_user_id] = @user.id
-    session[:current_user_name] = "#{@user.user_name}"
+    session[:current_user_name] = @user.user_name.to_s
     session[:logged_in] = true
     redirect_to users_show_path
   end
