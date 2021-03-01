@@ -3,9 +3,9 @@ A private events website where members create events. The events are visible to 
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 ![](app/assets/images/pic1.png)
-![](../images/pic2.png)
-![](../images/pic3.png)
-![](../images/pic4.png)
+![](app/assets/images/pic2.png)
+![](app/assets/images/pic3.png)
+![](app/assets/images/pic4.png)
 
 
 ## Built With
