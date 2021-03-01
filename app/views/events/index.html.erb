@@ -1,21 +1,31 @@
+<% if logged_in? %>
 <h3><%= session[:current_user_name] %> is logged in</h3>
-
+<% end %>
 <h2>Previous Events </h2>
+
 <table>
     <tr>
+        <th>Event id:</th>
         <th>Event Title:</th>
         <th>Event Description:</th>
         <th>Event Date</th>
         <th>Event Location</th> 
-        <th>Creator id</th> 
+        <th>Creator id</th>
+        <% if logged_in? %>
+        <th>View Attendees</th> 
+        <% end %>
     </tr>
     <% @event_past.each do |event|%>
     <tr>
-        <td><%= event.title %></td>
+        <td><%= event.id %></td>
+        <td><%= event.title %> </td>
         <td><%= event.description %></td>
         <td><%= event.date %></td>
         <td><%= event.location %></td>
         <td><%= event.creator_id %></td>
+        <% if logged_in? %>
+        <td><%= link_to 'Show attendees', events_show_path(:id => event.id) %></td>
+        <% end %>
     </tr>
     <% end %>
 </table>
@@ -23,19 +33,28 @@
 <h2>Upcoming Events</h2>
 <table>
     <tr>
+        <th>Event id:</th>
         <th>Event Title:</th>
         <th>Event Description:</th>
         <th>Event Date</th>
         <th>Event Location</th> 
         <th>Creator id</th> 
+        <% if logged_in? %>
+        <th>View Attendees</th> 
+        <% end %>
     </tr>
     <% @event_upcoming.each do |event|%>
     <tr>
+        <td><%= event.id %></td>
         <td><%= event.title %></td>
         <td><%= event.description %></td>
         <td><%= event.date %></td>
         <td><%= event.location %></td>
         <td><%= event.creator_id %></td>
+        <% if logged_in? %>
+        <td><%= link_to 'Show attendees', events_show_path(:id => event.id) %></td>
+        <% end %>
     </tr>
     <% end %>
 </table>
+

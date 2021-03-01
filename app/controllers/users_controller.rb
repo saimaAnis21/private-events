@@ -11,6 +11,12 @@ class UsersController < ApplicationController
     redirect_to users_show_path
   end
 
+  def log_out
+    # session[:current_user_id] =nil
+    reset_session
+    redirect_to users_sign_in_path
+  end
+
   def show
     # @event = Event.where("creator_id = #{session[:current_user_id]}")
     @event = Event.joins(:attendees).where("attendee_id=#{session[:current_user_id]}")

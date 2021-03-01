@@ -1,3 +1,4 @@
+<% if logged_in? %>
 <h3><%= session[:current_user_name] %> is logged in</h3>
 
 <h3>Create a new event</h3>
@@ -14,3 +15,9 @@
     <%= submit_tag("Submit") %>
 <% end %>
 </div>
+<% else %>
+    <p> Please sign in! </p>
+    <p class="control">
+     <%= link_to 'Sign In', users_sign_in_path, class: "button is-info" %>
+    </p>
+<% end %>

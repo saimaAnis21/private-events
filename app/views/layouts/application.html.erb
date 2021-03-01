@@ -11,6 +11,23 @@
   </head>
 
   <body>
+   <br/><br/><br/>
+  <p>
+      <%= link_to "All Events", events_index_path %>
+  </p>
+
+  <% if logged_in? %>
+              <p>
+                <%= link_to "Logout", users_log_out_path, method: :delete %>
+              </p>
+                <p>
+                   <%= link_to "Events attended by #{session[:current_user_name]}" , users_show_path %>
+                </p>
+            <% else %>
+            <p class="control">
+              <%= link_to 'Sign In', users_sign_in_path %>
+            </p>
+						      <% end %>
     <%= yield %>
   </body>
 </html>
