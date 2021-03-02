@@ -3,10 +3,10 @@
 <div>
 <%= form_tag(users_sign_up_path, method: 'post')  do %>
   <%= label_tag(:user_name, "Username:") %>
-  <%= text_field_tag(:user_name) %>
-
+  <%= text_field_tag 'user_name', nil, placeholder: "At least 5 characters long" %>
+  
  <%= label_tag(:email, "Email:") %>
-  <%= text_field_tag(:email) %>
+  <%= text_field_tag 'email', nil, placeholder: "Enter a valid email address" %>
   
   <%= submit_tag("Submit") %>
 <% end %>

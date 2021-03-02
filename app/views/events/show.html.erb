@@ -1,11 +1,6 @@
 
+<h2>List of attendees for Event <%= @title %></h2>
 
-<%#= @event.title %> <br />
-<%#= @event.description %> <br />
-<%#= @event.creator_id %> <br />
-<%#= @user.user_name %> <br />
-
-<h2>List of attendees</h2>
 <% @event.each do |name| %>
 <%= name.user_name %> <br />
 <% end %>
