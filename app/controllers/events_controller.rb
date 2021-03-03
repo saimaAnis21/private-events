@@ -32,7 +32,8 @@ class EventsController < ApplicationController
       user_id = session[:current_user_id]
 
       @user = User.where("id='#{user_id}'").take
-      @event = @user.created_events.build(title: params[:title].to_s, description: params[:description].to_s, date: params[:date], location: params[:location])
+      @event = @user.created_events.build(title: params[:title].to_s, description: params[:description].to_s,
+                                          date: params[:date], location: params[:location])
 
       if @event.save
 
@@ -46,18 +47,18 @@ class EventsController < ApplicationController
   end
 
   def attend
-      if logged_in?
-        eventid= params[:event_id]
-        event_title=params[:title]
-        userid= session[:current_user_id]
-        @attend = EventAttendee.create(attendee_id: userid, attended_event_id: eventid )
-          if @attend.save
-              redirect_to events_show_path(:id => eventid, :title => event_title)
-          else
-            redirect_to users_show_path
-          end
+    if logged_in?
+      eventid = params[:event_id]
+      event_title = params[:title]
+      userid = session[:current_user_id]
+      @attend = EventAttendee.create(attendee_id: userid, attended_event_id: eventid)
+      if @attend.save
+        redirect_to events_show_path(id: eventid, title: event_title)
       else
-        redirect_to users_sign_in_path
+        redirect_to users_show_path
       end
+    else
+      redirect_to users_sign_in_path
+    end
   end
 end
