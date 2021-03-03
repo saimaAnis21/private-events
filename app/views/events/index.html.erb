@@ -53,7 +53,7 @@
         <td><%= event.creator_id %></td>
         <% if logged_in? %>
         <td><%= link_to 'Show attendees', events_show_path(:id => event.id, :title => event.title) %></td>
-        <td><%= button_to 'Attend this event', events_attend_path(event) %></td>
+        <td><%= button_to 'Attend this event', events_attend_path(:event_id => event.id, :title => event.title), method: 'post' %></td>
         <% end %>
     </tr>
     <% end %>

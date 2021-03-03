@@ -29,6 +29,7 @@ Clone this project by typing ```git clone git@github.com:saimaAnis21/private-eve
 
 ### Run app
 - Type ```bundle install``` in the root file of the project.
+- Install yarn by typing ```gem install yarn```.
 - Type  ```rails db:migrate``` in the root file of the project. 
 - Type ```rails s``` in the root file of the project.
 - Goto [local host](http://localhost:3000/)

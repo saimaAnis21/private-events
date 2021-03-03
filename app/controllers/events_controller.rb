@@ -46,8 +46,18 @@ class EventsController < ApplicationController
   end
 
   def attend
-    attendees = EventAttendee.new
-    attendees << current_user.id
-    attendees.save
+      if logged_in?
+        eventid= params[:event_id]
+        event_title=params[:title]
+        userid= session[:current_user_id]
+        @attend = EventAttendee.create(attendee_id: userid, attended_event_id: eventid )
+          if @attend.save
+              redirect_to events_show_path(:id => eventid, :title => event_title)
+          else
+            redirect_to users_show_path
+          end
+      else
+        redirect_to users_sign_in_path
+      end
   end
 end
