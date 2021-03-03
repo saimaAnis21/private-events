@@ -40,6 +40,7 @@
         <th>Creator id</th> 
         <% if logged_in? %>
         <th>View Attendees</th> 
+        <th>Attend this event</th>
         <% end %>
     </tr>
     <% @event_upcoming.each do |event|%>
@@ -52,6 +53,7 @@
         <td><%= event.creator_id %></td>
         <% if logged_in? %>
         <td><%= link_to 'Show attendees', events_show_path(:id => event.id, :title => event.title) %></td>
+        <td><%= button_to 'Attend this event', events_attend_path(event) %></td>
         <% end %>
     </tr>
     <% end %>

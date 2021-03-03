@@ -32,8 +32,7 @@ class EventsController < ApplicationController
       user_id = session[:current_user_id]
 
       @user = User.where("id='#{user_id}'").take
-      @event = @user.created_events.build(title: params[:title].to_s, description: params[:description].to_s,
-                                          date: params[:date], location: params[:location])
+      @event = @user.created_events.build(title: params[:title].to_s, description: params[:description].to_s, date: params[:date], location: params[:location])
 
       if @event.save
 
@@ -44,5 +43,11 @@ class EventsController < ApplicationController
     else
       redirect_to users_sign_in_path
     end
+  end
+
+  def attend
+    attendees = EventAttendee.new
+    attendees << current_user.id
+    attendees.save
   end
 end

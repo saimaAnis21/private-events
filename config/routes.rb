@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   post 'events/new', to: 'events#create'
   get 'events/show', to: 'events#show'
   get 'events/index', to: 'events#index'
+
+  get 'events/attend', to: 'events#attend'
+  post 'events/attend', to: 'events#index'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "users#sign_up"
